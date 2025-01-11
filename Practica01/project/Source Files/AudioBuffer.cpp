@@ -6,8 +6,9 @@ CAudioBuffer::CAudioBuffer(unsigned int _uBuffer)
 
 CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
     if (!_sFilename) return nullptr;
+    return nullptr;
 }
 
 unsigned int CAudioBuffer::GetAlBuffer() const {
-
+    return m_uBuffer;
 }
