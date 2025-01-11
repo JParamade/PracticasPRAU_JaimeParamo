@@ -16,14 +16,15 @@
 using namespace std;
 
 int main() {
-    ALCdevice* oDevice = alcOpenDevice(nullptr);
-    ALCcontext* oContext = alcCreateContext(oDevice, nullptr);
-    alcMakeContextCurrent(oContext);
+    ALCdevice* pDevice = alcOpenDevice(nullptr);
+    ALCcontext* pContext = alcCreateContext(pDevice, nullptr);
+    ALCboolean oCurrentContext = alcMakeContextCurrent(pContext);
 
-
+    ALuint* aBuffer = new ALuint[10];
+    alGenBuffers(10, aBuffer);
     
-    alcDestroyContext(oContext);
-    alcCloseDevice(oDevice);
-
+    alcDestroyContext(pContext);
+    alcCloseDevice(pDevice);
+    
     return 0;
 }
