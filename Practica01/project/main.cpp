@@ -20,8 +20,7 @@ int main() {
     ALCcontext* pContext = alcCreateContext(pDevice, nullptr);
     ALCboolean oCurrentContext = alcMakeContextCurrent(pContext);
 
-    ALuint* aBuffer = new ALuint[10];
-    alGenBuffers(10, aBuffer);
+    
     
     alcDestroyContext(pContext);
     alcCloseDevice(pDevice);
