@@ -10,5 +10,5 @@ public:
     static CAudioBuffer* Load(const char* _sFilename);
     uint32_t GetAlBuffer() const;
 private:
-    uint32_t m_uBuffer;
+    uint32_t m_uBufferID;
 };

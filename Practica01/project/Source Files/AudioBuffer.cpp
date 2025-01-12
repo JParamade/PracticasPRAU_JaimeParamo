@@ -1,15 +1,13 @@
 ﻿#include "../Header Files/AudioBuffer.h"
-
+#include "../../openal/AL/al.h"
 #include <fstream>
 
-#include "../../openal/AL/al.h"
-
 CAudioBuffer::CAudioBuffer(uint32_t _uBuffer) 
-    : m_uBuffer(_uBuffer)
+    : m_uBufferID(_uBuffer)
 {}
 
 CAudioBuffer::~CAudioBuffer() {
-    alDeleteBuffers(1, &m_uBuffer);
+    alDeleteBuffers(1, &m_uBufferID);
 }
 
 CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
@@ -68,18 +66,16 @@ CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
             pStream.read(sAudioData, uDataSize);
             static_cast<void>(fclose(pFile));
         }
-        else {
-            pStream.seekg(uChunkSize, std::ios::cur);
-        }
+        else pStream.seekg(uChunkSize, std::ios::cur);
     }
     
-    ALenum uBufferFormat = uChannelNumber == 1
+    ALenum uFormatLabel = uChannelNumber == 1
         ? (uBitsPerSample == 8 ? AL_FORMAT_MONO8 : AL_FORMAT_MONO16)
         : uBitsPerSample == 8 ? AL_FORMAT_STEREO8 : AL_FORMAT_STEREO16;
     
     ALuint uBuffer;
     alGenBuffers(1, &uBuffer);
-    alBufferData(uBuffer, uBufferFormat, sAudioData, static_cast<ALsizei>(uDataSize),static_cast<ALsizei>(uSampleRate));
+    alBufferData(uBuffer, uFormatLabel, sAudioData, static_cast<ALsizei>(uDataSize),static_cast<ALsizei>(uSampleRate));
 
     delete[] sAudioData;
 
@@ -87,5 +83,5 @@ CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
 }
 
 uint32_t CAudioBuffer::GetAlBuffer() const {
-    return m_uBuffer;
+    return m_uBufferID;
 }
