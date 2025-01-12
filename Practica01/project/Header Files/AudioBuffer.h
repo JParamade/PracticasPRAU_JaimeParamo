@@ -1,11 +1,14 @@
 ﻿#pragma once
 
+#include <cstdint>
+
 class CAudioBuffer {
 public:
-    CAudioBuffer(unsigned int _uBuffer);
+    CAudioBuffer(uint32_t _uBuffer);
+    ~CAudioBuffer();
 
     static CAudioBuffer* Load(const char* _sFilename);
-    unsigned int GetAlBuffer() const;
+    uint32_t GetAlBuffer() const;
 private:
-    unsigned int m_uBuffer;
+    uint32_t m_uBuffer;
 };
