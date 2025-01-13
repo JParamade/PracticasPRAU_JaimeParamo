@@ -30,16 +30,6 @@ int main() {
     CAudioBuffer* oAudioBuffer = CAudioBuffer::Load("data/music.wav");
     CAudioSource oAudioSource(oAudioBuffer);
     
-    oAudioSource.Stop();
-    oAudioSource.Play();
-    printf("Reproduciendo sonido...\n");
-
-    while (oAudioSource.IsPlaying()) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    }
-
-    printf("Reproducción finalizada...\n");
-    
     alcMakeContextCurrent(nullptr);
     alcDestroyContext(pContext);
     alcCloseDevice(pDevice);
