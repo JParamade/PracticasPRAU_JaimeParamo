@@ -1,5 +1,5 @@
 ﻿#include "../Header Files/AudioBuffer.h"
-#include "../../openal/AL/al.h"
+#include "../openal/AL/al.h"
 #include <fstream>
 
 CAudioBuffer::CAudioBuffer(uint32_t _uBuffer) 

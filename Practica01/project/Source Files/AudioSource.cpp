@@ -1,6 +1,5 @@
-﻿#include "../Header FIles/AudioSource.h"
-
-#include "AL/al.h"
+﻿#include "../Header Files/AudioSource.h"
+#include "../openal/AL/al.h"
 
 CAudioSource::CAudioSource(const CAudioBuffer* _pBuffer) {
     alGenSources(1, &m_uSourceID);
@@ -46,7 +45,7 @@ void CAudioSource::Stop() const {
     alSourceStop(m_uSourceID);
 }
 
-void CAudioSource::Pause() const  {
+void CAudioSource::Pause() const {
     alSourcePause(m_uSourceID);
 }
 
