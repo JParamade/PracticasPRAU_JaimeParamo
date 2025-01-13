@@ -1,16 +1,15 @@
 ﻿#include "../Header Files/AudioSource.h"
 #include "../openal/AL/al.h"
-#include <cstdio>
 
 CAudioSource::CAudioSource(const CAudioBuffer* _pBuffer) {
     alGenSources(1, &m_uSourceID);
 
-    alSourcef(m_uSourceID, AL_PITCH, 1);
-    alSourcef(m_uSourceID, AL_GAIN, 1);
-    alSourcei(m_uSourceID, AL_LOOPING, 0);
+    SetPitch(1.0f);
+    SetGain(1.0f);
+    SetLooping(false);
 
-    alSource3f(m_uSourceID, AL_POSITION, 0, 0, 0);
-    alSource3f(m_uSourceID, AL_VELOCITY, 0, 0, 0);
+    SetPosition(0, 0, 0);
+    SetVelocity(0, 0, 0);
 
     if (_pBuffer) alSourcei(m_uSourceID, AL_BUFFER, static_cast<ALint>(_pBuffer->GetAlBuffer()));
 }
