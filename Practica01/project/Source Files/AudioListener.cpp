@@ -24,9 +24,9 @@ void CAudioListener::SetListenerOrientation(float _fX, float _fY, float _fZ) con
 }
 
 CAudioListener::CAudioListener() {
-    alListener3f(AL_POSITION, 0, 0, 0);
-    alListener3f(AL_VELOCITY, 0, 0, 0);
-    alListener3f(AL_ORIENTATION, 0, 0, 0);
+    SetListenerPosition(0, 0, 0);
+    SetListenerVelocity(0, 0, 0);
+    SetListenerOrientation(0, 0, 0);
 }
 
 CAudioListener* CAudioListener::m_pInstance = nullptr;
