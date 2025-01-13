@@ -13,6 +13,10 @@
 #include <fstream>     
 #include <iterator>
 
+#include "Header Files/AudioBuffer.h"
+#include "Header Files/AudioListener.h"
+#include "Header Files/AudioSource.h"
+
 using namespace std;
 
 int main() {
@@ -20,7 +24,11 @@ int main() {
     ALCcontext* pContext = alcCreateContext(pDevice, nullptr);
     ALCboolean oCurrentContext = alcMakeContextCurrent(pContext);
 
-    
+    CAudioBuffer* oAudioBuffer = CAudioBuffer::Load("data/music.wav");
+    CAudioSource oAudioSource(oAudioBuffer);
+    CAudioListener* oAudioListener = CAudioListener::GetInstance();
+
+    oAudioSource.Play();    
     
     alcDestroyContext(pContext);
     alcCloseDevice(pDevice);

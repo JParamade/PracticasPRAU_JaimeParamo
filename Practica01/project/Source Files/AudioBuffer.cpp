@@ -14,7 +14,7 @@ CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
     FILE* pFile;
     int iFile = fopen_s(&pFile, _sFilename, "rb");
     if (iFile != 0) {
-        printf("The file \'%s\' could not be opened.\n", _sFilename);
+        static_cast<void>(fprintf(stderr, "The file \'%s\' could not be opened.\n", _sFilename));
         return nullptr;
     }
     
@@ -23,7 +23,7 @@ CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
 
     pStream.read(sBuffer, 4);
     if (strncmp(sBuffer, "RIFF", 4) != 0) {
-        printf("Non valid WAV file (RIFF is missing).\n");
+        static_cast<void>(fprintf(stderr, "Non valid WAV file (RIFF is missing).\n"));
         static_cast<void>(fclose(pFile));
         return nullptr;
     }
@@ -31,7 +31,7 @@ CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
     pStream.seekg(4, std::ios::cur);
     pStream.read(sBuffer, 4);
     if (strncmp(sBuffer, "WAVE", 4) != 0) {
-        printf("Non valid WAV file (WAVE is missing).\n");
+        static_cast<void>(fprintf(stderr, "Non valid WAV file (WAVE is missing).\n"));
         static_cast<void>(fclose(pFile));
         return nullptr;
     }
@@ -47,7 +47,7 @@ CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
             pStream.read(reinterpret_cast<char*>(&uAudioFormat), sizeof(uAudioFormat));
 
             if (uAudioFormat != 1) {
-                printf("Non valid audio format (only PCM supported).\n");
+                static_cast<void>(fprintf(stderr, "Non valid audio format (only PCM supported).\n"));
                 static_cast<void>(fclose(pFile));
                 return nullptr; 
             }
