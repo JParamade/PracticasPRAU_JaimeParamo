@@ -17,7 +17,7 @@
 
 #include "Header Files/AudioBuffer.h"
 #include "Header Files/AudioListener.h"
-#include "Header Files/AudioSource.h"
+#include "Header Files/AudioSource.h" 
 
 using namespace std;
 
@@ -27,9 +27,9 @@ int main() {
     alcMakeContextCurrent(pContext);
     
     CAudioListener& oAudioListener = CAudioListener::GetInstance();
-    CAudioBuffer* oAudioBuffer = CAudioBuffer::Load("data/music.wav");
+    CAudioBuffer* oAudioBuffer = CAudioBuffer::Load("data/file1.wav");
     CAudioSource oAudioSource(oAudioBuffer);
-    
+
     alcMakeContextCurrent(nullptr);
     alcDestroyContext(pContext);
     alcCloseDevice(pDevice);

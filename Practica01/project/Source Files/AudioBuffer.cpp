@@ -58,9 +58,14 @@ CAudioBuffer* CAudioBuffer::Load(const char* _sFilename) {
             pStream.seekg(6, std::ios::cur);
 
             pStream.read(reinterpret_cast<char*>(&uBitsPerSample), sizeof(uBitsPerSample));
+
+            if (uChunkSize > 16) {
+                pStream.read(reinterpret_cast<char*>(&uChunkSize), 2);
+                pStream.seekg(uChunkSize, std::ios::cur);
+            }
         }
         else if(strncmp(sBuffer, "data", 4) == 0) {
-            pStream.read(reinterpret_cast<char*>(&uDataSize), sizeof(uDataSize));
+            uDataSize = uChunkSize;
 
             sAudioData = new char[uDataSize];
             pStream.read(sAudioData, uDataSize);
