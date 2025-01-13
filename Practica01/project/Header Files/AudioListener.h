@@ -5,7 +5,7 @@ public:
     CAudioListener(const CAudioListener&) = delete;
     CAudioListener& operator=(const CAudioListener&) = delete;
     
-    static CAudioListener* GetInstance();
+    static CAudioListener& GetInstance();
     static void DestroyInstance();
 
     void SetListenerPosition(float _fX, float _fY, float _fZ) const;

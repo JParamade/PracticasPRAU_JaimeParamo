@@ -2,8 +2,6 @@
 #include "../openal/AL/al.h"
 #include <cstdio>
 
-
-
 CAudioSource::CAudioSource(const CAudioBuffer* _pBuffer) {
     alGenSources(1, &m_uSourceID);
 
@@ -21,34 +19,34 @@ CAudioSource::~CAudioSource() {
     alDeleteSources(1, &m_uSourceID);
 }
     
-void CAudioSource::SetPitch(float _fPitch) const {
+void CAudioSource::SetPitch(float _fPitch) {
     alSourcef(m_uSourceID, AL_PITCH, _fPitch);
 }
 
-void CAudioSource::SetGain(float _fGain) const {
+void CAudioSource::SetGain(float _fGain) {
     alSourcef(m_uSourceID, AL_GAIN, _fGain);
 }
 
-void CAudioSource::SetLooping(bool _bLoop) const {
+void CAudioSource::SetLooping(bool _bLoop) {
     alSourcei(m_uSourceID, AL_LOOPING, _bLoop ? AL_TRUE : AL_FALSE);
 }
     
-void CAudioSource::SetPosition(float _fX, float _fY, float _fZ) const {
+void CAudioSource::SetPosition(float _fX, float _fY, float _fZ) {
     alSource3f(m_uSourceID, AL_POSITION, _fX, _fY, _fZ);
 }
-void CAudioSource::SetVelocity(float _fX, float _fY, float _fZ) const {
+void CAudioSource::SetVelocity(float _fX, float _fY, float _fZ) {
     alSource3f(m_uSourceID, AL_VELOCITY, _fX, _fY, _fZ);
 }
     
-void CAudioSource::Play() const {
+void CAudioSource::Play() {
     alSourcePlay(m_uSourceID);
 }
 
-void CAudioSource::Stop() const {
+void CAudioSource::Stop() {
     alSourceStop(m_uSourceID);
 }
 
-void CAudioSource::Pause() const {
+void CAudioSource::Pause() {
     alSourcePause(m_uSourceID);
 }
 

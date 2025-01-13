@@ -11,7 +11,9 @@
 #include <vector>
 
 #include <fstream>     
+#include <iostream>
 #include <iterator>
+#include <thread>
 
 #include "Header Files/AudioBuffer.h"
 #include "Header Files/AudioListener.h"
@@ -22,14 +24,23 @@ using namespace std;
 int main() {
     ALCdevice* pDevice = alcOpenDevice(nullptr);
     ALCcontext* pContext = alcCreateContext(pDevice, nullptr);
-    ALCboolean oCurrentContext = alcMakeContextCurrent(pContext);
-
+    alcMakeContextCurrent(pContext);
+    
+    CAudioListener& oAudioListener = CAudioListener::GetInstance();
     CAudioBuffer* oAudioBuffer = CAudioBuffer::Load("data/music.wav");
     CAudioSource oAudioSource(oAudioBuffer);
-    CAudioListener* oAudioListener = CAudioListener::GetInstance();
-
-    oAudioSource.Play();    
     
+    oAudioSource.Stop();
+    oAudioSource.Play();
+    printf("Reproduciendo sonido...\n");
+
+    while (oAudioSource.IsPlaying()) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    }
+
+    printf("Reproducción finalizada...\n");
+    
+    alcMakeContextCurrent(nullptr);
     alcDestroyContext(pContext);
     alcCloseDevice(pDevice);
     

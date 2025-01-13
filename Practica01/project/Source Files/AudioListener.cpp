@@ -1,9 +1,9 @@
 ﻿#include "../Header Files/AudioListener.h"
 #include "../openal/AL/al.h"
 
-CAudioListener* CAudioListener::GetInstance() {
+CAudioListener& CAudioListener::GetInstance() {
     if (!m_pInstance) m_pInstance = new CAudioListener();
-    return m_pInstance;
+    return *m_pInstance;
 }
 
 void CAudioListener::DestroyInstance() {

@@ -7,16 +7,16 @@ public:
     CAudioSource(const CAudioBuffer* _pBuffer);
     ~CAudioSource();
     
-    void SetPitch(float _fPitch) const;
-    void SetGain(float _fGain) const;
-    void SetLooping(bool _bLoop) const;
+    void SetPitch(float _fPitch);
+    void SetGain(float _fGain);
+    void SetLooping(bool _bLoop);
     
-    void SetPosition(float _fX, float _fY, float _fZ) const;
-    void SetVelocity(float _fX, float _fY, float _fZ) const;
+    void SetPosition(float _fX, float _fY, float _fZ);
+    void SetVelocity(float _fX, float _fY, float _fZ);
     
-    void Play() const;
-    void Stop() const;
-    void Pause() const;
+    void Play();
+    void Stop();
+    void Pause();
     bool IsPlaying() const;
 private:
     uint32_t m_uSourceID;
