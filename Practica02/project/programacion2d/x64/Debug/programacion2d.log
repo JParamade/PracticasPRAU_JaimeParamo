@@ -1,0 +1,34 @@
+﻿  main.cpp
+  AudioBuffer.cpp
+  AudioListener.cpp
+  AudioSource.cpp
+  Generating Code...
+main.obj : error LNK2019: unresolved external symbol __imp_alcCreateContext referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcDestroyContext referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcOpenDevice referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_alcCloseDevice referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwInit referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwDestroyWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
+AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alGenBuffers referenced in function "public: static class CAudioBuffer * __cdecl CAudioBuffer::Load(char const *)" (?Load@CAudioBuffer@@SAPEAV1@PEBD@Z)
+AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alDeleteBuffers referenced in function "public: __cdecl CAudioBuffer::~CAudioBuffer(void)" (??1CAudioBuffer@@QEAA@XZ)
+AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alBufferData referenced in function "public: static class CAudioBuffer * __cdecl CAudioBuffer::Load(char const *)" (?Load@CAudioBuffer@@SAPEAV1@PEBD@Z)
+AudioListener.obj : error LNK2019: unresolved external symbol __imp_alListener3f referenced in function "public: void __cdecl CAudioListener::SetListenerOrientation(float,float,float)const " (?SetListenerOrientation@CAudioListener@@QEBAXMMM@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alGenSources referenced in function "public: __cdecl CAudioSource::CAudioSource(class CAudioBuffer const *)" (??0CAudioSource@@QEAA@PEBVCAudioBuffer@@@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alDeleteSources referenced in function "public: __cdecl CAudioSource::~CAudioSource(void)" (??1CAudioSource@@QEAA@XZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcef referenced in function "public: void __cdecl CAudioSource::SetGain(float)" (?SetGain@CAudioSource@@QEAAXM@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSource3f referenced in function "public: void __cdecl CAudioSource::SetPosition(float,float,float)" (?SetPosition@CAudioSource@@QEAAXMMM@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcei referenced in function "public: __cdecl CAudioSource::CAudioSource(class CAudioBuffer const *)" (??0CAudioSource@@QEAA@PEBVCAudioBuffer@@@Z)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alGetSourcei referenced in function "public: bool __cdecl CAudioSource::IsPlaying(void)const " (?IsPlaying@CAudioSource@@QEBA_NXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcePlay referenced in function "public: void __cdecl CAudioSource::Play(void)" (?Play@CAudioSource@@QEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourceStop referenced in function "public: void __cdecl CAudioSource::Stop(void)" (?Stop@CAudioSource@@QEAAXXZ)
+AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcePause referenced in function "public: void __cdecl CAudioSource::Pause(void)" (?Pause@CAudioSource@@QEAAXXZ)
+..\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+H:\U-tad\Programa Avanzado en Programacion de Videojuegos\Programacion de Audio\PracticasPRAU_JaimeParamo\Practica01\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 27 unresolved externals
