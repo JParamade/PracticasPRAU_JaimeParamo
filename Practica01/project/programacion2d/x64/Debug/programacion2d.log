@@ -1,8 +1,4 @@
 ﻿  main.cpp
-  AudioBuffer.cpp
-  AudioListener.cpp
-  AudioSource.cpp
-  Generating Code...
 main.obj : error LNK2019: unresolved external symbol __imp_alcCreateContext referenced in function main
 main.obj : error LNK2019: unresolved external symbol __imp_alcMakeContextCurrent referenced in function main
 main.obj : error LNK2019: unresolved external symbol __imp_alcDestroyContext referenced in function main

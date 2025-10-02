@@ -4,11 +4,11 @@
 
 class CAudioBuffer {
 public:
-    CAudioBuffer(uint32_t _uBuffer);
-    ~CAudioBuffer();
+  CAudioBuffer(uint32_t _uBuffer);
+  ~CAudioBuffer();
 
-    static CAudioBuffer* Load(const char* _sFilename);
-    uint32_t GetAlBuffer() const;
+  static CAudioBuffer* Load(const char* _sFilename);
+  uint32_t GetAlBuffer() const;
 private:
-    uint32_t m_uBufferID;
+  uint32_t m_uBufferID;
 };
