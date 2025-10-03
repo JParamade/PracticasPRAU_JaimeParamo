@@ -30,12 +30,14 @@
     <ClInclude Include="..\src\Header Files\AudioBuffer.h" />
     <ClInclude Include="..\src\Header Files\AudioListener.h" />
     <ClInclude Include="..\src\Header Files\AudioSource.h" />
+    <ClInclude Include="..\src\Header Files\Vec2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\Source Files\AudioBuffer.cpp" />
     <ClCompile Include="..\src\Source Files\AudioListener.cpp" />
     <ClCompile Include="..\src\Source Files\AudioSource.cpp" />
+    <ClCompile Include="..\src\Source Files\Vec2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

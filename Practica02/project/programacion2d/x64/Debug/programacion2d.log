@@ -14,9 +14,12 @@ main.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced
 main.obj : error LNK2019: unresolved external symbol glfwDestroyWindow referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function main
-main.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function main
+main.obj : error LNK2019: unresolved external symbol glfwGetTime referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function main
 main.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: __cdecl CVec2::CVec2(float,float)" (??0CVec2@@QEAA@MM@Z) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: float __cdecl CVec2::GetX(void)const " (?GetX@CVec2@@QEBAMXZ) referenced in function main
+main.obj : error LNK2019: unresolved external symbol "public: float __cdecl CVec2::GetY(void)const " (?GetY@CVec2@@QEBAMXZ) referenced in function main
 AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alGenBuffers referenced in function "public: static class CAudioBuffer * __cdecl CAudioBuffer::Load(char const *)" (?Load@CAudioBuffer@@SAPEAV1@PEBD@Z)
 AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alDeleteBuffers referenced in function "public: __cdecl CAudioBuffer::~CAudioBuffer(void)" (??1CAudioBuffer@@QEAA@XZ)
 AudioBuffer.obj : error LNK2019: unresolved external symbol __imp_alBufferData referenced in function "public: static class CAudioBuffer * __cdecl CAudioBuffer::Load(char const *)" (?Load@CAudioBuffer@@SAPEAV1@PEBD@Z)
@@ -31,4 +34,4 @@ AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcePlay r
 AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourceStop referenced in function "public: void __cdecl CAudioSource::Stop(void)" (?Stop@CAudioSource@@QEAAXXZ)
 AudioSource.obj : error LNK2019: unresolved external symbol __imp_alSourcePause referenced in function "public: void __cdecl CAudioSource::Pause(void)" (?Pause@CAudioSource@@QEAAXXZ)
 ..\lib\glfw3.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
-H:\U-tad\Programa Avanzado en Programacion de Videojuegos\Programacion de Audio\PracticasPRAU_JaimeParamo\Practica01\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 27 unresolved externals
+H:\U-tad\Programa Avanzado en Programacion de Videojuegos\Programacion de Audio\PracticasPRAU_JaimeParamo\Practica02\project\x64\Debug\programacion2d.exe : fatal error LNK1120: 30 unresolved externals
