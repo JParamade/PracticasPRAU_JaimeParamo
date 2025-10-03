@@ -55,19 +55,33 @@ int main() {
   }
 
   alcMakeContextCurrent(pContext);
+  alDopplerFactor(.5f);
 
   // Figure Variables
-  const unsigned int uOvalRadius = 25u;
+  const unsigned int uListenerRadius = 25u;
+  const unsigned int uSourceRadius = 5u;
 
   // Audio Variables
   CAudioListener& oAudioListener = CAudioListener::GetInstance();
-  CVec2 vListenerPosition = CVec2((WINDOW_WIDTH * .5f) - uOvalRadius, WINDOW_HEIGHT - uOvalRadius);
-  oAudioListener.SetListenerPosition(vListenerPosition.GetX(), vListenerPosition.GetY(), 0.f);
+  oAudioListener.SetListenerOrientation(.0f, 1.f, .0f);
+  CVec2 vListenerPosition = CVec2((WINDOW_WIDTH * .5f) - uListenerRadius, WINDOW_HEIGHT - uListenerRadius);
+  oAudioListener.SetListenerPosition(vListenerPosition.GetX(), vListenerPosition.GetY(), .0f);
 
   CAudioBuffer* oAudioBuffer = CAudioBuffer::Load("data/engine.wav");
   CAudioSource oAudioSource(oAudioBuffer);
+  oAudioSource.SetLooping(true);
+  oAudioSource.SetGain(2.f);
+  CVec2 vSourcePosition = CVec2((WINDOW_WIDTH * .5f) - uSourceRadius, (WINDOW_HEIGHT * .5f) - uSourceRadius);
+  oAudioSource.SetPosition(vSourcePosition.GetX(), vSourcePosition.GetY(), .0f);
 
   oAudioSource.Play();
+
+  // Movement Variables
+  float fListenerSpeed = 100.f;
+  float fSourceSpeed = 1.f;
+  float fSourceAngle = .0f;
+  CVec2 vMovementSourceCenter = CVec2(WINDOW_WIDTH * .5f, WINDOW_HEIGHT * .5f);
+  float fMovementSourceRadius = WINDOW_HEIGHT * .25f;
 
   // Time Variables
   double dCurrentTime;
@@ -79,14 +93,41 @@ int main() {
     dDeltaTime = dCurrentTime - dLastTime;
     dLastTime = dCurrentTime;
 
-    lgfx_clearcolorbuffer(0.f, 0.f, 0.f);
+    float fHorizontalSpeed = .0f;
+    if (glfwGetKey(pCurrentWindow, GLFW_KEY_LEFT) == GLFW_PRESS) {
+      vListenerPosition.SetX(vListenerPosition.GetX() - fListenerSpeed * dDeltaTime);
+      fHorizontalSpeed = -fListenerSpeed;
+    }
+    if (glfwGetKey(pCurrentWindow, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+      vListenerPosition.SetX(vListenerPosition.GetX() + fListenerSpeed * dDeltaTime);
+      fHorizontalSpeed = fListenerSpeed;
+    }
 
-    vListenerPosition.SetX(vListenerPosition.GetX());
-    vListenerPosition.SetY(vListenerPosition.GetY());
+    oAudioListener.SetListenerVelocity(fHorizontalSpeed, .0f, .0f);
+
+    if (vListenerPosition.GetX() + uListenerRadius < 0) vListenerPosition.SetX(-1.f * uListenerRadius);
+    if (vListenerPosition.GetX() + uListenerRadius > WINDOW_WIDTH) vListenerPosition.SetX(WINDOW_WIDTH - uListenerRadius);
+
+    fSourceAngle += fSourceSpeed * dDeltaTime;
+
+    vSourcePosition.SetX(vMovementSourceCenter.GetX() + fMovementSourceRadius * cos(fSourceAngle));
+    vSourcePosition.SetY(vMovementSourceCenter.GetY() + fMovementSourceRadius * sin(fSourceAngle));
+
+    oAudioSource.SetVelocity(
+      -fMovementSourceRadius * sin(fSourceAngle) * fSourceSpeed, 
+      fMovementSourceRadius * cos(fSourceAngle) * fSourceSpeed,
+      .0f
+    );
+
+    lgfx_clearcolorbuffer(0.f, 0.f, 0.f); 
 
     lgfx_setcolor(1.f, 1.f, 1.f, 1.f);
-    lgfx_drawoval(vListenerPosition.GetX(), vListenerPosition.GetY(), uOvalRadius * 2, uOvalRadius * 2);
-    oAudioListener.SetListenerPosition(vListenerPosition.GetX(), vListenerPosition.GetY(), 0.f);
+    // Draw Listener Oval
+    lgfx_drawoval(vListenerPosition.GetX(), vListenerPosition.GetY(), uListenerRadius * 2, uListenerRadius * 2);
+    oAudioListener.SetListenerPosition(vListenerPosition.GetX(), vListenerPosition.GetY(), .0f);
+    // Draw Source Oval
+    lgfx_drawoval(vSourcePosition.GetX(), vSourcePosition.GetY(), uSourceRadius * 2, uSourceRadius * 2);
+    oAudioSource.SetPosition(vSourcePosition.GetX(), vSourcePosition.GetY(), .0f);
 
     glfwSwapBuffers(pCurrentWindow);
     glfwPollEvents();
